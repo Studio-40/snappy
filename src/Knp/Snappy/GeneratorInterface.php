@@ -15,9 +15,9 @@ interface GeneratorInterface
     /**
      * Generates the output media file from the specified input HTML file
      *
-     * @param  string $input   The input HTML filename or URL
-     * @param  string $output  The output media filename
-     * @param  array  $options An array of options for this generation only
+     * @param  array  $input     Array of input HTML filenames or URLs
+     * @param  string $output    The output media filename
+     * @param  array  $options   An array of options for this generation only
      * @param  bool   $overwrite Overwrite the file if it exists. If not, throw an InvalidArgumentException
      */
     function generate($input, $output, array $options = array(), $overwrite = false);

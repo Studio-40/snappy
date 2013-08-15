@@ -184,7 +184,7 @@ abstract class AbstractGenerator implements GeneratorInterface
     /**
      * Returns the command for the given input and output files
      *
-     * @param  string $input   The input file
+     * @param  array $input    Array of input files
      * @param  string $output  The ouput file
      * @param  array  $options An optional array of options that will be used
      *                         only for this command
@@ -326,7 +326,7 @@ abstract class AbstractGenerator implements GeneratorInterface
      * Builds the command string
      *
      * @param  string $binary   The binary path/name
-     * @param  string $input    Url or file location of the page to process
+     * @param  string $input    Array of url or file locations of the pages to process
      * @param  string $output   File location to the image-to-be
      * @param  array  $options  An array of options
      *
@@ -359,7 +359,13 @@ abstract class AbstractGenerator implements GeneratorInterface
             }
         }
 
-        $command .= ' '.escapeshellarg($input).' '.escapeshellarg($output);;
+        $inputArgs = '';
+
+        foreach ($input as $target) {
+            $inputArgs .= escapeshellarg($target).' ';
+        }
+
+        $command .= ' '.$inputArgs . escapeshellarg($output);
 
         return $command;
     }
